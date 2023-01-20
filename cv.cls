@@ -1,0 +1,114 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesClass{cv}[2023/01/20 Custom CV class]
+
+\LoadClass{article}
+
+\RequirePackage[usenames,dvipsnames]{color}
+
+\RequirePackage{titlesec}
+\titleformat{\section}
+{\Large\scshape\raggedright}
+{}{0em}
+{}
+[\titlerule]
+\titleformat{\subsection}
+{\large\scshape\raggedright}
+{}{0em}
+{}
+
+\RequirePackage{geometry}
+\setlength{\evensidemargin}{-0.25in}
+\setlength{\headheight}{0.5in}
+\setlength{\headsep}{0in}
+\setlength{\oddsidemargin}{-0.25in}
+\setlength{\paperheight}{297mm}
+\setlength{\paperwidth}{210mm}
+\setlength{\tabcolsep}{0in}
+\setlength{\textheight}{9.5in}
+\setlength{\textwidth}{7in}
+\setlength{\topmargin}{-0.3in}
+\setlength{\topskip}{0in}
+\setlength{\voffset}{0.0in}
+
+\RequirePackage{enumitem}
+
+\RequirePackage{hyperref}
+\hypersetup{
+    colorlinks=false,
+    linkcolor=black,
+    filecolor=white,
+    urlcolor=white,
+}
+
+\RequirePackage{graphicx}
+
+\newcommand{\datedsection}[2]{%
+    \section[#1]{#1 \hfill #2}%
+}
+
+\newcommand{\educationsubsection}[6]{%
+    \begin{tabular*}{\textwidth}{l@{{}\extracolsep{\fill}}r}
+        \vspace{-0.5pt}
+        {\scshape{\bfseries #1}} & #2 \\
+        {#3} & {\small#4} \\
+        {\hspace{10pt}\small{\textit{\textbf{--} #5: #6}}} & \\
+    \end{tabular*}
+    \vspace{0.1cm}
+}
+
+\newcommand{\edsubsectionshort}[4]{%
+    \begin{tabular*}{\textwidth}{l@{{}\extracolsep{\fill}}r}
+        \vspace{-0.5pt}
+        {\scshape{\bfseries #1}} & #2 \\
+        {#3} & {\small#4} \\
+    \end{tabular*}
+}
+
+\newcommand{\worksubsection}[5]{%
+    \begin{tabular*}{\textwidth}{l@{\cftdotfill{\cftsecdotsep}\extracolsep{\fill}}r}
+        \textbf{\textsc{#1}} & #2 \\
+        {#3} & {\small#4} \\
+    \end{tabular*}\\
+    \parbox{0.75\textwidth}{
+        \small
+        \begin{itemize}
+            \vspace{-2pt}
+            #5
+        \end{itemize}
+    }
+}
+\pagestyle{empty}
+
+\newcommand{\name}[1]{%
+    \centerline{\Huge{#1}}
+}
+
+\newcommand{\objectivesection}[1]{%
+    \section{Objective}\hspace{1pt}\parbox{0.99\textwidth}{#1}
+}
+
+\newcommand{\educationsection}[1]{
+    \section{Education \texorpdfstring{\hfill {\small  \href{#1}{\includegraphics[scale=0.07]{images/lattes_logo.png}}}}{}}
+}
+
+\newcommand{\projectssection}[1]{
+    \section{Projects \texorpdfstring{\hfill {\small  \href{#1}{\includegraphics[scale=0.03]{images/github_logo.png}}}}{}}
+}
+
+\newcommand{\contact}[5]{%
+\centerline{%
+\makebox[0pt][c]{%
+#1 {\large\textperiodcentered} #2 {\large\textperiodcentered} #3
+\ {\large\textperiodcentered} #4 \ {\large\textperiodcentered} \ #5%
+}%
+}%
+}
+
+\newcommand{\resitem}[1]{\small \item[\textbf{--}] #1 \vspace{-4pt}}
+
+\newcommand{\longcontact}[5]{%
+    \noindent
+    #1\hfill {\large\textperiodcentered}\hfill #2\hfill
+    {\large\textperiodcentered}\hfill #3\\
+    #4\hfill #5%
+}
