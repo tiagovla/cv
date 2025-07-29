@@ -1,62 +1,65 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{cv}[2023/01/20 Custom CV class]
 
+% Base class
 \LoadClass{article}
 
+% --- Packages ---
 \RequirePackage[usenames,dvipsnames]{color}
-
 \RequirePackage{enumitem}
 \RequirePackage{ifthen}
 \RequirePackage{xparse}
-
 \RequirePackage{titlesec}
+\RequirePackage{geometry}
+\RequirePackage{hyperref}
+\RequirePackage{graphicx}
+
+% --- Page layout ---
+\geometry{
+    paperwidth=210mm,
+    paperheight=297mm,
+    textwidth=7in,
+    textheight=9.5in,
+    top=1in,
+    left=1in,
+    right=1in,
+    bottom=1in
+}
+\setlength{\evensidemargin}{-0.25in}
+\setlength{\oddsidemargin}{-0.25in}
+\setlength{\topmargin}{-0.3in}
+\setlength{\topskip}{0in}
+\setlength{\headheight}{0.4in}
+\setlength{\headsep}{0in}
+\setlength{\voffset}{0in}
+\setlength{\tabcolsep}{0in}
+
+% --- Section formatting ---
 \titleformat{\section}
 {\Large\scshape\raggedright}
-{}{0em}
-{}
+{}{0em}{}
 [\titlerule]
 \titleformat{\subsection}
 {\large\scshape\raggedright}
-{}{0em}
-{}
+{}{0em}{}
 
-\RequirePackage{geometry}
-\setlength{\evensidemargin}{-0.25in}
-\setlength{\headheight}{0.5in}
-\setlength{\headsep}{0in}
-\setlength{\oddsidemargin}{-0.25in}
-\setlength{\paperheight}{297mm}
-\setlength{\paperwidth}{210mm}
-\setlength{\tabcolsep}{0in}
-\setlength{\textheight}{9.5in}
-\setlength{\textwidth}{7in}
-\setlength{\topmargin}{-0.3in}
-\setlength{\topskip}{0in}
-\setlength{\voffset}{0.0in}
-
-\RequirePackage{enumitem}
-
-\RequirePackage{hyperref}
+% --- Hyperref setup ---
 \hypersetup{
     colorlinks=false,
     linkcolor=black,
     filecolor=white,
-    urlcolor=white,
+    urlcolor=white
 }
 
-\RequirePackage{graphicx}
+% --- Page style ---
+\pagestyle{empty}
 
-\newcommand{\datedsection}[2]{%
-    \section[#1]{#1 \hfill #2}%
-}
-
-% info section
+% --- Identity and header ---
 \newcommand{\name}[1]{\def\@name{#1}}
 \newcommand{\email}[1]{\def\@email{#1}}
 \newcommand{\phone}[1]{\def\@phone{#1}}
 \newcommand{\address}[1]{\def\@address{#1}}
 
-% Initialize empty by default (optional)
 \def\@name{}
 \def\@email{}
 \def\@phone{}
@@ -67,30 +70,28 @@
     \centerline{%
         \makebox[0pt][c]{%
             \@address
-            \quad
-            {\large\textperiodcentered}
-            \quad
+            \quad {\large\textperiodcentered} \quad
             \href{mailto:\@email}{\@email}
-            \quad
-            {\large\textperiodcentered}
-            \quad
+            \quad {\large\textperiodcentered} \quad
             \href{tel:\@phone}{\@phone}
         }%
     }%
 }
 
-% education section
+% --- Section: Objective ---
+\NewDocumentEnvironment{Objective}{}{
+\section*{Objective}}{}
 
+% --- Section: Education ---
 \NewDocumentEnvironment{Education}{o}{
     \section*{Education%
         \IfNoValueTF{#1}{}{%
             \hfill
             {\small\href{#1}{\includegraphics[scale=0.07]{images/lattes_logo.png}}}%
         }%
-    }%
-    \addcontentsline{toc}{section}{Education}
-}{
-}
+    }
+}{}
+
 \newcommand{\educationitem}[6]{%
     \begin{tabular*}{\textwidth}{l@{{}\extracolsep{\fill}}r}
         \vspace{-0.5pt}
@@ -104,7 +105,7 @@
     \vspace{0.1cm}
 }
 
-% experience section
+% --- Section: Experience ---
 \newenvironment{Experience}{
     \section{Experience}
     \begin{itemize}[leftmargin=10pt, noitemsep]
@@ -112,11 +113,7 @@
     \end{itemize}
 }
 
-\newcommand{\academicitem}[4]{%
-\item[\textbf{--}] #1 (#2--#3), #4.
-}
-
-\newcommand{\worksubsection}[5]{%
+\newcommand{\experienceitem}[5]{%
     \begin{tabular*}{\textwidth}{l@{\cftdotfill{\cftsecdotsep}\extracolsep{\fill}}r}
         \textbf{\textsc{#1}} & #2 \\
         {#3} & {\small#4} \\
@@ -129,49 +126,52 @@
         \end{itemize}
     }
 }
-\pagestyle{empty}
 
-\NewDocumentEnvironment{Objective}{}{
-    \section*{Objective}
-}{
-}
-
-\newcommand{\projectssection}[1]{
-    \section{Projects \texorpdfstring{\hfill {\small
-    \href{#1}{\includegraphics[scale=0.03]{images/github_logo.png}}}}{}}
-}
-
-\newcommand{\contact}[5]{%
-    \centerline{%
-        \makebox[0pt][c]{%
-            #1 {\large\textperiodcentered} #2 {\large\textperiodcentered} #3
-            \ {\large\textperiodcentered} #4 \ {\large\textperiodcentered} \ #5%
+% --- Section: Projects ---
+\NewDocumentEnvironment{Projects}{o}{
+    \section*{Projects%
+        \IfNoValueTF{#1}{}{%
+            \texorpdfstring{%
+                \hfill
+                {\small\href{#1}{\includegraphics[scale=0.03]{images/github_logo.png}}}%
+            }{}%
         }%
-    }%
-}
-
-\newcommand{\resitem}[1]{\small
-\item[\textbf{--}] #1 \vspace{-4pt}}
-
-\newcommand{\longcontact}[5]{%
-    \noindent
-    #1\hfill {\large\textperiodcentered}\hfill #2\hfill
-    {\large\textperiodcentered}\hfill #3\\
-    #4\hfill #5%
-}
-
-% publication section
-\NewDocumentEnvironment{Publications}{}
-{
-    \section*{Publications}
-    \addcontentsline{toc}{section}{Publications}
-    \begin{itemize}[leftmargin=10pt]
-        }
-        {
+    }
+    \begin{itemize}[leftmargin=10pt, itemsep=0pt]
+        }{
     \end{itemize}
 }
 
-% Publication item command
+\newcommand{\projectitem}[2]{%
+\item[--] #1 \hspace{0.5em} $|$ \hspace{0.5em}
+    \emph{\href{#2}{\textcolor{blue}{GitHub}}}%
+}
+
+% --- Section: Skills ---
+\newenvironment{Skills}{
+    \section{Skills}
+    \vspace{-0.5em}
+}{}
+
+\newcommand{\skillcategory}[2]{%
+    \textbf{#1} \vspace{-6pt}
+    \begin{itemize}
+            #2
+    \end{itemize}
+}
+
+\newcommand{\skillitem}[1]{%
+\item #1
+}
+
+% --- Section: Publications ---
+\NewDocumentEnvironment{Publications}{}{
+    \section*{Publications}
+    \begin{itemize}[leftmargin=10pt]
+        }{
+    \end{itemize}
+}
+
 \newcommand{\publicationitem}[2]{%
 \item[\textbf{--}] #1. \textit{#2}.
 }
