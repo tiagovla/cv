@@ -50,6 +50,37 @@
     \section[#1]{#1 \hfill #2}%
 }
 
+% info section
+\newcommand{\name}[1]{\def\@name{#1}}
+\newcommand{\email}[1]{\def\@email{#1}}
+\newcommand{\phone}[1]{\def\@phone{#1}}
+\newcommand{\address}[1]{\def\@address{#1}}
+
+% Initialize empty by default (optional)
+\def\@name{}
+\def\@email{}
+\def\@phone{}
+\def\@address{}
+
+\newcommand{\makeprofileheader}{%
+    \centerline{\Huge{\@name}}\vspace{0.2cm}
+    \centerline{%
+        \makebox[0pt][c]{%
+            \@address
+            \quad
+            {\large\textperiodcentered}
+            \quad
+            \href{mailto:\@email}{\@email}
+            \quad
+            {\large\textperiodcentered}
+            \quad
+            \href{tel:\@phone}{\@phone}
+        }%
+    }%
+}
+
+% education section
+
 \NewDocumentEnvironment{Education}{o}{
     \section*{Education%
         \IfNoValueTF{#1}{}{%
@@ -60,7 +91,7 @@
     \addcontentsline{toc}{section}{Education}
 }{
 }
-\newcommand{\educationsubsection}[6]{%
+\newcommand{\educationitem}[6]{%
     \begin{tabular*}{\textwidth}{l@{{}\extracolsep{\fill}}r}
         \vspace{-0.5pt}
         {\scshape{\bfseries #1}} & #2 \\
@@ -71,6 +102,18 @@
         }%
     \end{tabular*}
     \vspace{0.1cm}
+}
+
+% experience section
+\newenvironment{Experience}{
+    \section{Experience}
+    \begin{itemize}[leftmargin=10pt, noitemsep]
+        }{
+    \end{itemize}
+}
+
+\newcommand{\academicitem}[4]{%
+\item[\textbf{--}] #1 (#2--#3), #4.
 }
 
 \newcommand{\worksubsection}[5]{%
@@ -88,18 +131,9 @@
 }
 \pagestyle{empty}
 
-\newcommand{\name}[1]{%
-    \centerline{\Huge{#1}}\vspace{0.2cm}
-}
-
 \NewDocumentEnvironment{Objective}{}{
     \section*{Objective}
 }{
-}
-
-\newcommand{\educationsection}[1]{
-    \section{Education \texorpdfstring{\hfill {\small
-    \href{#1}{\includegraphics[scale=0.07]{images/lattes_logo.png}}}}{}}
 }
 
 \newcommand{\projectssection}[1]{
@@ -124,4 +158,20 @@
     #1\hfill {\large\textperiodcentered}\hfill #2\hfill
     {\large\textperiodcentered}\hfill #3\\
     #4\hfill #5%
+}
+
+% publication section
+\NewDocumentEnvironment{Publications}{}
+{
+    \section*{Publications}
+    \addcontentsline{toc}{section}{Publications}
+    \begin{itemize}[leftmargin=10pt]
+        }
+        {
+    \end{itemize}
+}
+
+% Publication item command
+\newcommand{\publicationitem}[2]{%
+\item[\textbf{--}] #1. \textit{#2}.
 }
