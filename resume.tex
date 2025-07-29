@@ -1,57 +1,73 @@
 \documentclass{cv}
 
+
+
+\newenvironment{AcademicExperience}{
+    \section{Academic Experience}
+    \begin{itemize}[leftmargin=10pt, noitemsep]
+        }{
+    \end{itemize}
+}
+
+\newcommand{\academicitem}[4]{%
+\item[\textbf{--}] #1 (#2--#3), #4.
+}
+
 \begin{document}
 
 \name{Tiago Vilela Lima Amorim}
-\vspace{0.2cm}
 \contact{Av. Pres. Antônio Carlos, 6627}{31270--901 Belo
 Horizonte}{Brazil}{tiagovla@ufmg.br}{+55031991599886}
 
-\section{Objective}
-\hspace{1pt}\parbox{0.99\textwidth}{
+\begin{Objective}
     Research in numerical analysis and scientific computing.
-}
-%
-\vspace{-5pt}
-%
-\educationsection{https://lattes.cnpq.br/9062605056335996}
+\end{Objective}
 
-\educationsubsection{Federal University of Minas Gerais}{Belo Horizonte, Brazil}
-{Bachelor of Electrical Engineering (Emphasis in Power Electronics
-and Power Systems)}
-{2011--2016}
-{Undergraduate Thesis}
-{Frequency Response Modeling of Electric Circuits Using Digital Systems}
-\\
-\edsubsectionshort{University of Illinois at Urbana-Champaign}
-{Urbana-Champaign, USA}
-{Bachelor of Electrical Engineering (Science without Borders, CAPES
-Scholarship)}
-{2014--2014}
-\\
-\educationsubsection{Federal University of Minas Gerais}
-{Belo Horizonte, Brazil}{Master of Electrical Engineering (CAPES Scholarship)}
-{2018--2020}
-{Dissertation}
-{MLPG-MoM Hybrid Numerical Technique Applied to Electromagnetic
-Scattering}\vspace{0.1cm}
-\\
-\educationsubsection{Federal University of Minas Gerais}{Belo Horizonte,
-Brazil}{PhD Program in Electrical Engineering (CAPES
-Scholarship)}
-{2021--current}
-{Thesis}
-{Discontinuous Galerkin Method Applied to
-Electromagnetic Problems}\vspace{0.1cm}
-\vspace{-10pt}
+\begin{Education}[https://lattes.cnpq.br/9062605056335996]
+    \educationsubsection
+    {Federal University of Minas Gerais}
+    {Belo Horizonte, Brazil}
+    {Bachelor of Electrical Engineering (Power Electronics and Power Systems)}
+    {2011--2016}
+    {Undergraduate Thesis}
+    {Frequency Response Modeling of Electric Circuits Using Digital Systems}
+    \educationsubsection
+    {University of Illinois at Urbana-Champaign}
+    {Urbana-Champaign, USA}
+    {Bachelor of Electrical Engineering (Science without Borders,
+    CAPES Scholarship)}
+    {2014--2014}
+    {}
+    {}
+    \educationsubsection
+    {Federal University of Minas Gerais}
+    {Belo Horizonte, Brazil}
+    {Master of Electrical Engineering (CAPES Scholarship)}
+    {2018--2020}
+    {Dissertation}
+    {MLPG-MoM Hybrid Numerical Technique Applied to Electromagnetic Scattering}
+    \educationsubsection
+    {Federal University of Minas Gerais}
+    {Belo Horizonte, Brazil}
+    {PhD Program in Electrical Engineering (CAPES Scholarship)}
+    {dec. 2021-- jun. 2025}
+    {Thesis}
+    {Discontinuous Galerkin Method Applied to Electromagnetic Problems}
+    \educationsubsection
+    {The Ohio State University}
+    {Columbus, USA}
+    {Sandwich PhD Program in Electrical Engineering (PDSE, CAPES Scholarship)}
+    {sept. 2023--may. 2024}
+    {}
+    {}
+\end{Education}
 
-\section{Academic Experience}
-\begin{itemize}[leftmargin=10pt, noitemsep]
-    \item[\textbf{--}] Scientific Research Scholarship in Wireless Ad
-        Hoc Network (2012--2012), Federal University of Minas Gerais.
-    \item[\textbf{--}] Teaching Assistent Scholarship in Electric
-        Circuits (2013--2013), Federal University of Minas Gerais.
-\end{itemize}
+\begin{AcademicExperience}
+    \academicitem{Scientific Research Scholarship in Wireless Ad Hoc
+    Network}{2012}{2012}{Federal University of Minas Gerais}
+    \academicitem{Teaching Assistant Scholarship in Electric
+    Circuits}{2013}{2013}{Federal University of Minas Gerais}
+\end{AcademicExperience}
 
 \section{Publications}
 \begin{itemize}[leftmargin=10pt]

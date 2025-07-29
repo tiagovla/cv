@@ -5,6 +5,10 @@
 
 \RequirePackage[usenames,dvipsnames]{color}
 
+\RequirePackage{enumitem}
+\RequirePackage{ifthen}
+\RequirePackage{xparse}
+
 \RequirePackage{titlesec}
 \titleformat{\section}
 {\Large\scshape\raggedright}
@@ -46,22 +50,27 @@
     \section[#1]{#1 \hfill #2}%
 }
 
+\NewDocumentEnvironment{Education}{o}{
+    \section*{Education%
+        \IfNoValueTF{#1}{}{%
+            \hfill
+            {\small\href{#1}{\includegraphics[scale=0.07]{images/lattes_logo.png}}}%
+        }%
+    }%
+    \addcontentsline{toc}{section}{Education}
+}{
+}
 \newcommand{\educationsubsection}[6]{%
     \begin{tabular*}{\textwidth}{l@{{}\extracolsep{\fill}}r}
         \vspace{-0.5pt}
         {\scshape{\bfseries #1}} & #2 \\
-        {#3} & {\small#4} \\
-        {\hspace{10pt}\small{\textit{\textbf{--} #5: #6}}} & \\
+        {#3} & {\small#4}
+        \ifthenelse{\equal{#5}{}}{}{%
+            \\
+            {\hspace{10pt}\small{\textit{\textbf{--} #5: #6}}} & \\
+        }%
     \end{tabular*}
     \vspace{0.1cm}
-}
-
-\newcommand{\edsubsectionshort}[4]{%
-    \begin{tabular*}{\textwidth}{l@{{}\extracolsep{\fill}}r}
-        \vspace{-0.5pt}
-        {\scshape{\bfseries #1}} & #2 \\
-        {#3} & {\small#4} \\
-    \end{tabular*}
 }
 
 \newcommand{\worksubsection}[5]{%
@@ -72,39 +81,43 @@
     \parbox{0.75\textwidth}{
         \small
         \begin{itemize}
-            \vspace{-2pt}
-            #5
+                \vspace{-2pt}
+                #5
         \end{itemize}
     }
 }
 \pagestyle{empty}
 
 \newcommand{\name}[1]{%
-    \centerline{\Huge{#1}}
+    \centerline{\Huge{#1}}\vspace{0.2cm}
 }
 
-\newcommand{\objectivesection}[1]{%
-    \section{Objective}\hspace{1pt}\parbox{0.99\textwidth}{#1}
+\NewDocumentEnvironment{Objective}{}{
+    \section*{Objective}
+}{
 }
 
 \newcommand{\educationsection}[1]{
-    \section{Education \texorpdfstring{\hfill {\small  \href{#1}{\includegraphics[scale=0.07]{images/lattes_logo.png}}}}{}}
+    \section{Education \texorpdfstring{\hfill {\small
+    \href{#1}{\includegraphics[scale=0.07]{images/lattes_logo.png}}}}{}}
 }
 
 \newcommand{\projectssection}[1]{
-    \section{Projects \texorpdfstring{\hfill {\small  \href{#1}{\includegraphics[scale=0.03]{images/github_logo.png}}}}{}}
+    \section{Projects \texorpdfstring{\hfill {\small
+    \href{#1}{\includegraphics[scale=0.03]{images/github_logo.png}}}}{}}
 }
 
 \newcommand{\contact}[5]{%
-\centerline{%
-\makebox[0pt][c]{%
-#1 {\large\textperiodcentered} #2 {\large\textperiodcentered} #3
-\ {\large\textperiodcentered} #4 \ {\large\textperiodcentered} \ #5%
-}%
-}%
+    \centerline{%
+        \makebox[0pt][c]{%
+            #1 {\large\textperiodcentered} #2 {\large\textperiodcentered} #3
+            \ {\large\textperiodcentered} #4 \ {\large\textperiodcentered} \ #5%
+        }%
+    }%
 }
 
-\newcommand{\resitem}[1]{\small \item[\textbf{--}] #1 \vspace{-4pt}}
+\newcommand{\resitem}[1]{\small
+\item[\textbf{--}] #1 \vspace{-4pt}}
 
 \newcommand{\longcontact}[5]{%
     \noindent
