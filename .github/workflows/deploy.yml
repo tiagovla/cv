@@ -25,6 +25,18 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           path: public
+  cleanup:
+    name: Cleanup old deployments
+    needs: build
+    runs-on: ubuntu-latest
+    permissions: write-all
+    steps:
+      - name: github-pages
+        uses: strumwolf/delete-deployment-environment@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          environment: github-pages
+          onlyRemoveDeployments: true
   deploy:
     name: Deploy to GitHub Pages
     needs: build
