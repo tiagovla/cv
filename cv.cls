@@ -1,7 +1,9 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{cv}[2023/01/20 Custom CV class]
 
-% Base class
+\DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}
+\ProcessOptions\relax
+
 \LoadClass{article}
 
 % --- Packages ---
@@ -18,15 +20,15 @@
 \geometry{
     paperwidth=210mm,
     paperheight=297mm,
-    textwidth=7in,
-    textheight=9.5in,
-    top=1in,
-    left=1in,
-    right=1in,
-    bottom=1in
+    textwidth=17cm,
+    textheight=24cm,
+    top=25.4mm,
+    left=25.4mm,
+    right=25.4mm,
+    bottom=25.4mm
 }
-\setlength{\evensidemargin}{-0.25in}
-\setlength{\oddsidemargin}{-0.25in}
+\setlength{\evensidemargin}{0pt}
+\setlength{\oddsidemargin}{0pt}
 \setlength{\topmargin}{-0.3in}
 \setlength{\topskip}{0in}
 \setlength{\headheight}{0.4in}
@@ -52,7 +54,7 @@
 }
 
 % --- Page style ---
-\pagestyle{empty}
+% \pagestyle{empty}
 
 % --- Identity and header ---
 \newcommand{\name}[1]{\def\@name{#1}}
