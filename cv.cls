@@ -93,38 +93,48 @@
 }{}
 
 \newcommand{\educationitem}[6]{%
-    \begin{tabular*}{\textwidth}{l@{{}\extracolsep{\fill}}r}
-        \vspace{-0.5pt}
-        {\scshape{\bfseries #1}} & #2 \\
-        {#3} & {\small#4}
+    \begin{tabular*}{\textwidth}{l}
+        \begin{tabular*}{\textwidth}{l @{\extracolsep{\fill}} r}
+            {\scshape{\bfseries #1}} & #2 \\
+        \end{tabular*}\\
+        \begin{tabular*}{\textwidth}{l @{\extracolsep{\fill}} r}
+            {#3} & {\small#4}
+        \end{tabular*}
         \ifthenelse{\equal{#5}{}}{}{%
             \\
-            {\hspace{10pt}\small{\textit{\textbf{--} #5: #6}}} & \\
+            \begin{tabular*}{\textwidth}{l @{\extracolsep{\fill}} r}
+                \hspace{10pt}\small{\textit{\textbf{--} #5: #6}} &
+            \end{tabular*}
         }%
+        \vspace{0.5em}
     \end{tabular*}
-    \vspace{0.1cm}
 }
 
 % --- Section: Experience ---
 \newenvironment{Experience}{
     \section{Experience}
-    \begin{itemize}[leftmargin=10pt, noitemsep]
-        }{
-    \end{itemize}
+}{
 }
 
 \newcommand{\experienceitem}[5]{%
-    \begin{tabular*}{\textwidth}{l@{\cftdotfill{\cftsecdotsep}\extracolsep{\fill}}r}
-        \textbf{\textsc{#1}} & #2 \\
-        {#3} & {\small#4} \\
-    \end{tabular*}\\
-    \parbox{0.75\textwidth}{
-        \small
-        \begin{itemize}
-                \vspace{-2pt}
-                #5
-        \end{itemize}
-    }
+    \begin{tabular*}{\textwidth}{l}
+        \begin{tabular*}{\textwidth}{l @{\extracolsep{\fill}} r}
+            {\scshape{\bfseries #1}} & #2 \\
+        \end{tabular*}\\
+        \begin{tabular*}{\textwidth}{l @{\extracolsep{\fill}} r}
+            {#3} & {\small#4}
+        \end{tabular*} \\
+        \begin{tabular*}{\textwidth}{l @{\extracolsep{\fill}} r}
+
+            \parbox{0.75\textwidth}{
+                \small
+                \begin{itemize}
+                        \vspace{-2pt}
+                        #5
+                \end{itemize}
+            }
+        \end{tabular*}
+    \end{tabular*}
 }
 
 % --- Section: Projects ---
