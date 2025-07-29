@@ -4,6 +4,10 @@ on:
     branches:
       - master
   workflow_dispatch:
+permissions:
+  contents: read
+  pages: write
+  id-token: write
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -13,8 +17,21 @@ jobs:
       - name: Set up Docker Compose
         run: |
           docker compose -f docker/docker-compose.yml up --build
-      - name: Upload resume.pdf as artifact
-        uses: actions/upload-artifact@v4
+      - name: Prepare artifact for Pages
+        run: |
+          mkdir public
+          cp resume.pdf public/
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
         with:
-          name: resume
-          path: resume.pdf
+          path: public
+  deploy:
+    name: Deploy to GitHub Pages
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
