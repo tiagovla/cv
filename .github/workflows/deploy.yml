@@ -14,17 +14,26 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-      - name: Set up Docker Compose
+      - name: Build resume PDF using Docker Compose
         run: |
           docker compose -f docker/docker-compose.yml up --build
-      - name: Prepare artifact for Pages
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+      - name: Install MkDocs
         run: |
-          mkdir public
-          cp resume.pdf public/
+          pip install mkdocs-material
+      - name: Build MkDocs site
+        run: |
+          mkdocs build
+      - name: Copy resume.pdf to site folder
+        run: |
+          cp resume.pdf site/
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: public
+          path: site
   cleanup:
     name: Cleanup old deployments
     needs: build
