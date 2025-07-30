@@ -1,4 +1,4 @@
-name: Build Resume
+name: build resume
 on:
   push:
     branches:
@@ -26,7 +26,8 @@ jobs:
           pip install mkdocs-material
       - name: Build MkDocs site
         run: |
-          mkdocs build
+          cp -r docs .github/docs
+          mkdocs build -f .github/mkdocs.yml -d ../site
       - name: Copy resume.pdf to site folder
         run: |
           cp resume.pdf site/
