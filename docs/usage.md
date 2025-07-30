@@ -15,7 +15,7 @@ Here is a minimal example of a LaTeX document using the `cv` class:
 \makeprofileheader
 
 \begin{Objective}
-    Electrical Engineering PhD with expertise in numerical analysis and scientific computing...
+    A short paragraph summarizing your goals or qualifications.
 \end{Objective}
 
 \begin{Education}[https://lattes.cnpq.br/123456789]

@@ -26,6 +26,56 @@ ______________________________________________________________________
 
 ______________________________________________________________________
 
+## Template
+
+Write your CV with clean and minimal LaTeX code — just like this:
+
+```latex
+\documentclass{cv}
+
+\name{Your Full Name}
+\address{City, Country}
+\email{you@example.com}
+\phone{+55 31 91234-5678}
+
+\begin{document}
+
+\makeprofileheader
+
+\begin{Objective}
+    A short paragraph summarizing your goals or qualifications.
+\end{Objective}
+
+\begin{Education}
+    \educationitem{University Name}{City, Country}{Degree}{Years}{Thesis Type}{Thesis Title}
+\end{Education}
+
+\begin{Experience}
+    \experienceitem{Job Title}{Years}{Company/Institution}{City, Country}{
+        \item Describe key responsibilities or achievements.
+        \item Use multiple lines if necessary.
+    }
+\end{Experience}
+
+\begin{Skills}
+    \skillcategory{Category Name}{
+        \skillitem{Skill 1, Skill 2, Skill 3}
+    }
+\end{Skills}
+
+\begin{Projects}
+    \projectitem{Project Title}{https://link-to-project}
+\end{Projects}
+
+\begin{Publications}
+    \publicationitem{Author(s). Title}{Journal or Conference, Year}
+\end{Publications}
+
+\end{document}
+```
+
+______________________________________________________________________
+
 ## License
 
 This project is licensed under the MIT License — see the [LICENSE](LICENSE) file for details.
