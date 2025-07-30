@@ -2,6 +2,8 @@
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Documentation](https://img.shields.io/badge/docs-online-brightgreen.svg)](https://tiagovla.github.io/cv/)
+[![CI](https://github.com/tiagovla/cv/actions/workflows/deploy.yml/badge.svg)](https://github.com/tiagovla/cv/actions/workflows/deploy.yml)
+[![Website](https://img.shields.io/badge/website-tiagovla.github.io%2Fcv-purple)](https://tiagovla.github.io/cv/)
 
 A minimal and elegant LaTeX class to create professional curriculum vitae
 easily. Designed for clean formatting and straightforward customization.
