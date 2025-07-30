@@ -3,7 +3,7 @@ services:
     build: .
     command: tectonic resume.tex
     volumes:
-      - ..:/data
+      - ../..:/data
     working_dir: /data
     stdin_open: true
     tty: true
