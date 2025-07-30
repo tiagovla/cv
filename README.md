@@ -74,6 +74,6 @@ install it in your local texmf tree.
 
 The class is minimal and easy to extend. You can modify the `.cls` file for more layout options.
 
----
+______________________________________________________________________
 
 For a complete example, see `resume.tex` in the repository. The rendered output is available [here](https://tiagovla.github.io/cv/resume.pdf).
