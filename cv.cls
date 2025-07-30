@@ -1,3 +1,10 @@
+% Copyright (c) 2025 Tiago V. L. Amorim (@tiagovla)
+% This file is part of https://github.com/tiagovla/cv
+% SPDX-License-Identifier: MIT
+%
+% Permission is hereby granted, free of charge, to use, copy, modify, and
+% distribute this software under the terms of the MIT License.
+
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{cv}[2023/01/20 Custom CV class]
 
