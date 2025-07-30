@@ -1,0 +1,23 @@
+site_name: CV LaTeX Class
+theme:
+  name: material
+  features:
+    - navigation.sections
+    - navigation.tabs
+    - content.code.copy
+    - content.code.annotate
+  palette:
+    - scheme: default
+      primary: blue
+      accent: indigo
+    - scheme: slate
+      toggle:
+        icon: material/brightness-6
+        name: Switch to dark mode
+nav:
+  - Home: index.md
+  - Installation: installation.md
+  - Usage: usage.md
+  - Available Sections: sections.md
+  - Customization: customization.md
+  - Examples: examples.md
