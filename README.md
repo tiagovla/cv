@@ -14,7 +14,7 @@ ______________________________________________________________________
 - Minimal and easy to extend `.cls` file.
 - Clean, professional layout focused on readability.
 - Compatible with pdflatex, xelatex, and lualatex.
-- Complete documentation available in the [`docs/`](./docs) folder.
+- Complete documentation available at [https://tiagovla.github.io/cv](https://tiagovla.github.io/cv).
 
 ______________________________________________________________________
 
