@@ -10,6 +10,12 @@ easily. Designed for clean formatting and straightforward customization.
 
 ______________________________________________________________________
 
+## Preview
+
+A live preview of the CV layout can be found [here](https://tiagovla.github.io/cv/examples/).
+
+______________________________________________________________________
+
 ## Features
 
 - Simple commands and environments for CV sections: Objective, Education, Experience, Skills, Projects, Publications.
