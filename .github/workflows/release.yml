@@ -13,17 +13,22 @@ jobs:
       - name: Get tag name
         id: get_tag
         run: echo "tag=${GITHUB_REF#refs/tags/}" >> $GITHUB_OUTPUT
+      - name: Inject version into cv.cls
+        run: |
+          version=${{ steps.get_tag.outputs.tag }}
+          sed -i "/\\\ProvidesClass/ s/\(\[[^ ]* \)/\1$version /" cv.cls
       - name: Prepare release files
         run: |
           mkdir release
           cp cv.cls release/
           cp -r images release/
-          zip -r cv-${{ steps.get_tag.outputs.tag }}.zip release
+          cd release
+          zip -r ../cv.zip .
       - name: Upload Release
         uses: softprops/action-gh-release@v2
         with:
           name: Release ${{ steps.get_tag.outputs.tag }}
           tag_name: ${{ steps.get_tag.outputs.tag }}
-          files: cv-${{ steps.get_tag.outputs.tag }}.zip
+          files: cv.zip
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
