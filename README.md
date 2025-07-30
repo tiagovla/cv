@@ -1,6 +1,6 @@
 # cv — Custom LaTeX Class for Curriculum Vitae
 
-![License](https://img.shields.io/badge/license-MIT-blue.svg)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Documentation](https://img.shields.io/badge/docs-online-brightgreen.svg)](https://tiagovla.github.io/cv/)
 
 A minimal and elegant LaTeX class to create professional curriculum vitae
